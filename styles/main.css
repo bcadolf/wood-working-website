@@ -138,6 +138,10 @@ img {
     margin: auto;
 }
 
+.proj-img {
+    border-radius: 25%;
+}
+
 footer {
     text-align: center;
     background-color: var(--secondary-color);
@@ -213,7 +217,7 @@ footer {
     .proj-img {
         position: absolute;
         top: 5%;
-        left: 15%;
+        left: 13%;
         width: 240px;
         height: auto;
         transition: transform 1s ease-in-out;
