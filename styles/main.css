@@ -142,6 +142,51 @@ img {
     border-radius: 25%;
 }
 
+#add-entry {
+    width: 60px;
+    padding: 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--text)
+}
+
+dialog {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: var(--background);
+    box-shadow: 0 0 40px var(--secondary-color);
+    width: fit-content;
+    margin: auto;
+}
+
+dialog form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+label {
+    padding: 15px;
+
+}
+
+::backdrop {
+    background-color: #5ba75b8a;
+}
+
+dialog button {
+    margin: 15px;
+    padding: 3px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+}
+
 footer {
     text-align: center;
     background-color: var(--secondary-color);
@@ -172,6 +217,12 @@ footer {
         display: grid;
         grid-template-columns: auto auto;
         grid-template-rows: auto auto auto;
+    }
+
+    #add-entry {
+        position: absolute;
+        right: 5%;
+        top: 10px;
     }
 
     #activePage {
@@ -228,7 +279,4 @@ footer {
         transform: scale(0.95);
         /* Slightly shrink side images */
     }
-
-
-
 }

@@ -33,6 +33,23 @@
     </header>
     <main>
         <h2 id="activePage">HOME</h2>
+        <button id="add-entry">Add Entry</button>
+        <dialog id="add-entry-modal">
+            <form action="scripts/journal.json" method="get">
+                <label>First Name: <input type="text" required name="first"
+                        title="Please enter your given name"></label>
+                <label>Last Initial: <input type="text" required name="last"
+                        title="Please enter your family name first initial"></label>
+                <label>Date: <input type="date" required name="date" title="Please enter todays date"></label>
+                <label>Title: <input type="text" required name="title"
+                        title="Please enter the title for the journal entry"></label>
+                <label>Entry: <textarea name="entry" required cols="50" rows="25"
+                        title="Please enter the journal entry content"
+                        placeholder="todays project was...."></textarea></label>
+                <button type="submit">Add to Journal</button>
+            </form>
+            <button id="close-entry-modal">&#9747;</button>
+        </dialog>
         <article id="entries">
             <div>
                 <h3>Where it all began.</h3>
