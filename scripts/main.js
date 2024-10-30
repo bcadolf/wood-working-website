@@ -49,7 +49,7 @@ projects.addEventListener("click", () => {
 const projImgs = document.querySelectorAll('.proj-img');
 let currentIndex = 0;
 
-if (projImgs) {
+if (projImgs.length > 0) {
     const updateImages = () => {
         projImgs.forEach((img, i) => {
             img.classList.remove('partial');
