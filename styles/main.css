@@ -122,7 +122,7 @@ article {
     padding: 5px;
     border: 2px solid var(--accent-color);
     border-radius: 10px;
-    box-shadow: 0 0 4 #3e2f1d9a;
+    box-shadow: 0 0 5px #3e2f1d9a;
 }
 
 .listView:hover {
