@@ -26,9 +26,9 @@
         <button id="menu"></button>
         <nav class="navigation">
             <a id="home" href="index.html">HOME</a>
-            <a id="about" href="about.html">ABOUT</a>
-            <a id="journal" href="journal.html">JOURNAL</a>
-            <a id="projects" href="projects.html">PROJECTS</a>
+            <a class="nav-item" href="about.html">ABOUT</a>
+            <a class="nav-item" href="journal.html">JOURNAL</a>
+            <a class="nav-item" href="projects.html">PROJECTS</a>
         </nav>
     </header>
     <main>
@@ -48,28 +48,17 @@
                         placeholder="todays project was...."></textarea></label>
                 <button type="submit">Add to Journal</button>
             </form>
-            <button id="close-entry-modal">&#9747;</button>
+            <button id="close-entry-modal">&#x2717;</button>
         </dialog>
         <article id="entries">
-            <div>
-                <h3>placeholder</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis animi velit quia inventore dolor rem
-                    autem odio, reiciendis soluta voluptatum rerum. Enim tempore deserunt obcaecati, perferendis soluta
-                    corporis ea laborum quos libero voluptatum hic voluptates fuga sunt sapiente nobis molestias
-                    distinctio provident doloribus blanditiis ipsa? Pariatur tempora totam magnam dicta, voluptatem,
-                    unde neque laborum, saepe sed consequatur quis commodi ducimus!</p>
-                <p>2024-10-31</p>
-            </div>
-            <div>
-                <h3>Where I am now.</h3>
-                <p>Now I am no longer a child or teenager. Time is a lot harder to come by when you have a job and a
-                    child. My projects have also changed in scale. As must as I wish to sit and slowly carve away, power
-                    tools same time, and allow me to feel like I make progress on my projects even if I only have a few
-                    minutes to do something. My son cares less about the tiny animals and enjoys putting together the
-                    table and chair made just for his size. My passion for woodworking is still there the projects have
-                    changed and will continue to change just as I am changing. </p>
-                <p>2024-07-21</p>
-            </div>
+            <dialog id="journalModal">
+                <div class="modal-content">
+                    <button class="close-button">&#x2717;</button>
+                    <h3 id="modal-title"></h3>
+                    <p id="modal-content"></p>
+                    <p id="modal-date"></p>
+                </div>
+            </dialog>
         </article>
     </main>
     <footer>

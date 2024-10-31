@@ -20,28 +20,18 @@ hamButton.addEventListener('click', () => {
 //-----------------------
 const activePage = document.getElementById("activePage");
 const home = document.getElementById("home");
-const about = document.getElementById("about");
-const journal = document.getElementById("journal");
-const projects = document.getElementById("projects");
 
-if (localStorage.getItem("title") == null) {
-    localStorage.setItem("title", home.textContent)
-};
+window.addEventListener('load', () => {
+    const currentUrl = (window.location.href).split('/');
+    const pageName = currentUrl[currentUrl.length - 1].replace('.html', '').toUpperCase();
+    localStorage.setItem("title", pageName)
+    if (localStorage.getItem("title") == 'INDEX') {
+        localStorage.setItem("title", home.textContent)
+    };
+    activePage.textContent = localStorage.getItem('title');
+});
 
-activePage.textContent = localStorage.getItem("title")
 
-home.addEventListener("click", () => {
-    localStorage.setItem("title", home.textContent)
-});
-about.addEventListener("click", () => {
-    localStorage.setItem("title", about.textContent)
-});
-journal.addEventListener("click", () => {
-    localStorage.setItem("title", journal.textContent)
-});
-projects.addEventListener("click", () => {
-    localStorage.setItem("title", projects.textContent)
-});
 
 //-----------------------------
 // Projects page dynamically transistion between project photos
@@ -94,21 +84,70 @@ if (closeModal) {
 };
 
 //-----------------------------
-// Journal page json fetch for the modals
+// Journal page entry card and modal building
 //---------------------------
-
-const url = 'https://bcadolf.github.io/wood-working-website/scripts/journal.json';
-
-async function callEntries() {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.table(data.entries);
-    entryData(data.entries);
-}
-entryData();
-
 const entryContainer = document.getElementById('entries');
 
 if (entryContainer) {
+    //-----------------------------
+    // Journal page json fetch for the modals
+    //---------------------------
+    const url = 'https://bcadolf.github.io/wood-working-website/scripts/journal.json';
 
-}
+    async function callEntries() {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            entryData(data.entries);
+        } catch (error) {
+            console.error('Error fetching entries:', error);
+        };
+    };
+
+    callEntries();
+
+    const entryData = (entries) => {
+        entries.forEach((entry, index) => {
+            let card = document.createElement('div');
+            let titles = document.createElement('h3');
+
+            let date = document.createElement('p');
+
+            // set all the card element values
+            card.classList.add('listView');
+            card.setAttribute('data-id', index);
+            titles.textContent = entry.title;
+            date.textContent = entry.date;
+            //add elements to card
+            card.appendChild(date);
+            card.appendChild(titles);
+            // add card to page
+            entryContainer.appendChild(card);
+        });
+
+        // Add click event listener to cards
+        const listView = document.querySelectorAll('.listView');
+        const journalModal = document.getElementById('journalModal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDate = document.getElementById('modal-date');
+        const modalContent = document.getElementById('modal-content');
+
+        listView.forEach(card => {
+            card.addEventListener('click', () => {
+                const index = card.getAttribute('data-id');
+                const entry = entries[index];
+                modalTitle.textContent = entry.title;
+                modalDate.textContent = `${entry.first} ${entry.last} ${entry.date}`;
+                modalContent.textContent = entry.content;
+
+                journalModal.showModal();
+            });
+        });
+
+        // Close modal
+        document.querySelector('.close-button').addEventListener('click', () => {
+            journalModal.close();
+        });
+    };
+
+};
