@@ -92,3 +92,23 @@ if (closeModal) {
         addEntryModal.close();
     });
 };
+
+//-----------------------------
+// Journal page json fetch for the modals
+//---------------------------
+
+const url = 'https://bcadolf.github.io/wood-working-website/scripts/journal.json';
+
+async function callEntries() {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.table(data.entries);
+    entryData(data.entries);
+}
+entryData();
+
+const entryContainer = document.getElementById('entries');
+
+if (entryContainer) {
+
+}
