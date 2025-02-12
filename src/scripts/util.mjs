@@ -16,18 +16,46 @@ export function pageTitle() {
     });
 }
 
-export function setLocalStore() {
-
+export function setLocalStore(key, items) {
+    localStorage.setItem(key, JSON.stringify(items));
 }
 
-export function getLocalStore() {
-
+export function getLocalStore(key) {
+    const items = localStorage.getItem(key);
+    return items ? JSON.parse(items) : [];
 }
 
-export function getJsonBin() {
+// functions for accessing the JsonBin Api that stores the json files off site.
+const apiKey = '$2a$10$y10jYmSSIYvn6kJNyCOw3.8EHGp77diWFwVw5IepSN9mnPneo88SK';
 
+export function getJsonBin(url) {
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-ACCESS-KEY': apiKey
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        });
 }
 
-export function updateJsonBIn() {
-
+export async function updateJsonBin(key) {
+    try {
+        const newData = getLocalStore(key);
+        // Send the PUT request to update the JSON file
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'X-ACCESS-KEY': apiKey,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newData)
+        });
+    } catch (error) {
+        console.error('Error updating entries:', error);
+    }
 }

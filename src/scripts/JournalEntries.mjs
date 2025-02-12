@@ -14,6 +14,6 @@ export default class JournalEntries {
             first: this.first,
             last: this.last,
             content: this.content
-        };
+        }
     }
 }

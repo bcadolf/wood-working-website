@@ -1,4 +1,5 @@
-import { pageTitle } from "./util.mjs";
+import { pageTitle, setLocalStore, getJsonBin, getLocalStore, updateJsonBin } from "./util.mjs";
+import JournalEntries from "./JournalEntries.mjs";
 
 
 pageTitle();
@@ -11,7 +12,6 @@ const addEntry = document.getElementById('add-entry')
 const addEntryModal = document.getElementById('add-entry-modal')
 const entryForm = document.getElementById('entry-form');
 const entryContainer = document.getElementById('entries');
-const successMessage = document.getElementById('success-message');
 
 if (addEntryModal) {
     addEntry.addEventListener('click', () => {
@@ -29,6 +29,7 @@ if (closeModal) {
 // Journal page entry card and modal building
 //---------------------------
 const entryData = (entries) => {
+    entryContainer.innerHTML = ''; // Clear existing entries
     entries.forEach((entry, index) => {
         let card = document.createElement('div');
         let titles = document.createElement('h3');
@@ -75,80 +76,33 @@ const entryData = (entries) => {
 //-----------------------------
 // Journal page json fetch for the modals
 //---------------------------
-const apiKey = '$2a$10$y10jYmSSIYvn6kJNyCOw3.8EHGp77diWFwVw5IepSN9mnPneo88SK';
 const url = 'https://api.jsonbin.io/v3/b/67a8d436e41b4d34e487463c';
+let storedEntries = getLocalStore('entries');
 
-const reloadEntries = async () => {
-    try {
-        const response =
-            setTimeout(fetch(url, {
-                method: 'GET',
-                headers: {
-                    'X-ACCESS-KEY': apiKey
-                }
-            }), 5000);
-        const data = await response.json();
-        entryContainer.innerHTML = ''; // Clear existing entries
-        entryData(data.record.entries); // Reload entries
-    } catch (error) {
-        console.error('Error reloading entries:', error);
-    }
-};
-
-fetch(url, {
-    method: 'GET',
-    headers: {
-        'X-ACCESS-KEY': apiKey
-    }
-})
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        entryData(data.record.entries);
-    })
-    .catch(error => console.error('Error fetching data:', error));
+document.addEventListener('DOMContentLoaded', async () => {
+    await getJsonBin(url)
+        .then(data => {
+            setLocalStore('entries', data.record.entries);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    entryData(storedEntries);
+});
 
 entryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const newEntry = {
-        title: document.getElementById('entry-title').value,
-        date: document.getElementById('entry-date').value,
-        first: document.getElementById('entry-fname').value,
-        last: document.getElementById('entry-lname').value,
-        content: document.getElementById('entry-content').value,
-    };
+    const newEntry = new JournalEntries(
+        document.getElementById('entry-title').value,
+        document.getElementById('entry-date').value,
+        document.getElementById('entry-fname').value,
+        document.getElementById('entry-lname').value,
+        document.getElementById('entry-content').value
+    );
 
-    try {
-
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'X-ACCESS-KEY': apiKey
-            }
-        })
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        const data = await response.json();
-
-
-        // Update data with new entry
-        data.record.entries.push(newEntry);
-
-        // Send the PATCH request to update the JSON file
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'X-ACCESS-KEY': apiKey,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data.record)
-        });
-        addEntryModal.close();
-    } catch (error) {
-        console.error('Error updating entries:', error);
-    }
-    reloadEntries();
+    let entries = getLocalStore('entries');
+    entries.push(newEntry.toJson());
+    setLocalStore('entries', entries);
+    addEntryModal.close();
+    entryData(entries);
+    updateJsonBin('entries');
 });
-
 
