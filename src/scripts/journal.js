@@ -26,6 +26,21 @@ if (closeModal) {
     });
 };
 //-----------------------------
+// Journal page json fetch for the modals
+//---------------------------
+const url = 'https://api.jsonbin.io/v3/b/67a8d436e41b4d34e487463c';
+let storedEntries = getLocalStore('entries');
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await getJsonBin(url)
+        .then(data => {
+            setLocalStore('entries', data.record.entries);
+            storedEntries = data.record.entries; // Update storedEntries
+            entryData(storedEntries); // Call entryData with updated storedEntries
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+//-----------------------------
 // Journal page entry card and modal building
 //---------------------------
 const entryData = (entries) => {
@@ -33,7 +48,6 @@ const entryData = (entries) => {
     entries.forEach((entry, index) => {
         let card = document.createElement('div');
         let titles = document.createElement('h3');
-
         let date = document.createElement('p');
 
         // set all the card element values
@@ -59,6 +73,7 @@ const entryData = (entries) => {
         card.addEventListener('click', () => {
             const index = card.getAttribute('data-id');
             const entry = entries[index];
+            console.log("Selected Entry:", entry);
             modalTitle.textContent = entry.title;
             modalDate.textContent = `${entry.first} ${entry.last} ${entry.date}`;
             modalContent.textContent = entry.content;
@@ -73,20 +88,6 @@ const entryData = (entries) => {
         });
     }
 };
-//-----------------------------
-// Journal page json fetch for the modals
-//---------------------------
-const url = 'https://api.jsonbin.io/v3/b/67a8d436e41b4d34e487463c';
-let storedEntries = getLocalStore('entries');
-
-document.addEventListener('DOMContentLoaded', async () => {
-    await getJsonBin(url)
-        .then(data => {
-            setLocalStore('entries', data.record.entries);
-        })
-        .catch(error => console.error('Error fetching data:', error));
-    entryData(storedEntries);
-});
 
 entryForm.addEventListener('submit', async (event) => {
     event.preventDefault();

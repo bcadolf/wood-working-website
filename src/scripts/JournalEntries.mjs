@@ -16,4 +16,13 @@ export default class JournalEntries {
             content: this.content
         }
     }
+
+    // Method to edit the entry not yet utalized but built for future.
+    // editEntry(newTitle, newDate, newFirst, newLast, newContent) {
+    //     this.title = newTitle || this.title;
+    //     this.date = newDate || this.date;
+    //     this.first = newFirst || this.first;
+    //     this.last = newLast || this.last;
+    //     this.content = newContent || this.content;
+    // }
 }
