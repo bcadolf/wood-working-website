@@ -59,3 +59,17 @@ export async function updateJsonBin(key) {
         console.error('Error updating entries:', error);
     }
 }
+
+export function setFirstSession() {
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!sessionStorage.getItem('firstLoad')) {
+            // Set Intial load value
+            sessionStorage.setItem('firstLoad', true);
+        }
+    });
+}
+
+export function checkSession(key) {
+    const load = sessionStorage.getItem(key);
+    return load === 'true';
+}
