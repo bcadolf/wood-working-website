@@ -213,6 +213,14 @@ footer {
     border-radius: 5px;
 }
 
+.project-icon {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+}
+
 
 @media screen and (min-width: 600px) {
 

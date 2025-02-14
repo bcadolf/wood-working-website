@@ -1,0 +1,40 @@
+{
+    "projects": [
+        {
+            "name": "Author 1",
+            "title": "Project Title 1",
+            "description": "Brief description of project 1",
+            "directions": "Detailed directions for project 1",
+            "supplies": [
+                "Supply 1",
+                "Supply 2"
+            ],
+            "cost": "$50",
+            "tools": [
+                "Tool 1",
+                "Tool 2"
+            ],
+            "difficulty": "Medium",
+            "image": "/src/images/dragon-egg-front.webp",
+            "model": "model1.obj"
+        },
+        {
+            "name": "Author 2",
+            "title": "Project Title 2",
+            "description": "Brief description of project 2",
+            "directions": "Detailed directions for project 2",
+            "supplies": [
+                "Supply A",
+                "Supply B"
+            ],
+            "cost": "$30",
+            "tools": [
+                "Tool A",
+                "Tool B"
+            ],
+            "difficulty": "Easy",
+            "image": "/src/images/cherry-wood-plate.webp",
+            "model": "model2.obj"
+        }
+    ]
+}
