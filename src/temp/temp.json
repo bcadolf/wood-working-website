@@ -8,12 +8,12 @@
             "supplies": [
                 "Carvingwood of your choice",
                 "Tung oil",
-                "Lint-free rag"
+                "Lint-free rag",
+                "Sand Paper"
             ],
             "cost": "$5-30",
             "tools": [
                 "Carving Knife or Small Pocket Knife (locking blade do not use pressure fold for carving)",
-                "Sand Paper",
                 "Sharpening Stone",
                 "Hand saw"
             ],
@@ -22,15 +22,15 @@
             "model": ""
         },
         {
-            "name": "Author 2",
-            "title": "Project Title 2",
-            "description": "Brief description of project 2",
+            "name": "Brandon A",
+            "title": "Cherry Plate",
+            "description": "A lathe turned wooden plate. This project should only be done if you have a lathe with a 12 inch swing minimum.",
             "directions": "Detailed directions for project 2",
             "supplies": [
-                "Supply A",
-                "Supply B"
+                "Cherrywood turning blank",
+                "Beeswax oil finish"
             ],
-            "cost": "$30",
+            "cost": "$10-30",
             "tools": [
                 "Tool A",
                 "Tool B"

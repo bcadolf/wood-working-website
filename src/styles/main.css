@@ -237,6 +237,7 @@ footer {
 
 .project-icon:hover {
     opacity: 70%;
+    box-shadow: 2px 2px 4px #3e2f1dbb;
 }
 
 #proj-highlight {
@@ -255,8 +256,12 @@ footer {
     overflow: hidden;
     object-fit: cover;
     object-position: center;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    box-shadow: 2px 4px 6px #3e2f1d90;
+    background-color: var(--background);
+    padding: 2px;
     margin: 5px;
-    padding: 5px;
 }
 
 #highlight-title {
