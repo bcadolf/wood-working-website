@@ -18,7 +18,7 @@
                 "Hand saw"
             ],
             "difficulty": "Rookie",
-            "image": "/src/images/dragon-egg-front.webp",
+            "image": "./images/dragon-egg-front.webp",
             "model": ""
         },
         {
@@ -36,7 +36,7 @@
                 "Tool B"
             ],
             "difficulty": "Easy",
-            "image": "/src/images/cherry-wood-plate.webp",
+            "image": "./images/cherry-wood-plate.webp",
             "model": "model2.obj"
         }
     ]
