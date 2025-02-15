@@ -26,13 +26,13 @@ export function getLocalStore(key) {
 }
 
 // functions for accessing the JsonBin Api that stores the json files off site.
-const apiKey = '$2a$10$y10jYmSSIYvn6kJNyCOw3.8EHGp77diWFwVw5IepSN9mnPneo88SK';
+const JsonBinapiKey = '$2a$10$y10jYmSSIYvn6kJNyCOw3.8EHGp77diWFwVw5IepSN9mnPneo88SK';
 
 export function getJsonBin(url) {
     return fetch(url, {
         method: 'GET',
         headers: {
-            'X-ACCESS-KEY': apiKey
+            'X-ACCESS-KEY': JsonBinapiKey
         }
     })
         .then(response => {
@@ -50,7 +50,7 @@ export async function updateJsonBin(key) {
         fetch(url, {
             method: 'PUT',
             headers: {
-                'X-ACCESS-KEY': apiKey,
+                'X-ACCESS-KEY': JsonBinapiKey,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newData)
@@ -58,4 +58,18 @@ export async function updateJsonBin(key) {
     } catch (error) {
         console.error('Error updating entries:', error);
     }
+}
+
+export function setFirstSession() {
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!sessionStorage.getItem('firstLoad')) {
+            // Set Intial load value
+            sessionStorage.setItem('firstLoad', true);
+        }
+    });
+}
+
+export function checkSession(key) {
+    const load = sessionStorage.getItem(key);
+    return load === 'true';
 }

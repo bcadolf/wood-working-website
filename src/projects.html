@@ -34,17 +34,22 @@
     </header>
     <main>
         <h2 id="activePage">HOME</h2>
+        <article>
+            <div id="proj-highlight">
+                <img id="highlight-img" src="" alt="Project Image">
+                <h3 id="highlight-title"></h3>
+                <p id="highlight-name"></p>
+                <p id="highlight-description"></p>
+                <a href="#" id="view-details">View All Details</a>
+            </div>
+            <div id="proj-icons">
+                <!-- dynamic project icons made from the images for each project -->
+            </div>
+        </article>
         <section>
-            <h3>Tools Needed</h3>
-            <ul>
-                <li>Carving Knife or Small Pocket Knife (locking blade do not use pressure fold for carving)</li>
-                <li>Sand Paper</li>
-                <li>Sharpening Stone</li>
-                <li>Wood of your choice</li>
-                <li>Saw</li>
-            </ul>
+            <h2>project calc</h2>
         </section>
-        <section>
+        <aside>
             <form action="https://formspree.io/f/xvgzbonw" method="POST" enctype="multipart/form-data">
                 <legend>Project Concept Submissions</legend>
                 <fieldset>
@@ -85,34 +90,22 @@
                 <input type="checkbox" name="proj-updates" id="proj-updates">
                 <input type="submit" value="Send Project">
             </form>
-        </section>
-        <article id="project-card-contianer">
-            <h3>Egg</h3>
-            <p>First project is all about carving your egg and then making it hatch!</p>
-            <ol>
-                <li>Start by making sure all your knives are sharp.</li>
-                <li>Cut your wood to a block about 5-6 inches tall (grain going vertical) and 2-3 inches width and
-                    depth.</li>
-                <li>Put on finger guards!!!!</li>
-                <li>Begin to shape the wood from the edges rounding it to an oblong oval. The top should be narrower
-                    than the bottom. Widest point about two thirds of the way down.</li>
-                <li>You now have and egg!! This will actually help you practice three different types of cuts. The push
-                    cut, pull cut, and stop cut.</li>
-                <li>If you desire for extra challege, pick a animal or creature and carve it hatching from the egg. You
-                    can see my first attempt in the images. I carved a dragon hatching.</li>
-            </ol>
-        </article>
-        <aside id="projects-aside">
-            <img class="proj-img" src="images/dragon-egg-front.webp" alt="Wooden Dragon Egg img1" loading="eager">
-            <img class="proj-img" src="images/dragon-egg-back.webp" alt="Wooden Dragon Egg img2" loading="lazy">
-            <img class="proj-img" src="images/dragon-egg-left.webp" alt="Wooden Dragon Egg img3" loading="lazy">
-            <img class="proj-img" src="images/dragon-egg-right.webp" alt="Wooden Dragon Egg img4" loading="lazy">
-            <img class="proj-img" src="images/cherry-wood-plate.webp" alt="Cherry Wood Plate" loading="lazy">
         </aside>
+        <div id="proj-display">
+            <h2 id="display-title"></h2>
+            <p id="display-name"></p>
+            <p id="display-description"></p>
+            <p id="display-directions"></p>
+            <p id="display-supplies"></p>
+            <p id="display-cost"></p>
+            <p id="display-tools"></p>
+            <p id="display-difficulty"></p>
+            <img id="display-image">
+            <p id="display-model"></p>
+        </div>
     </main>
     <footer>
         <p><span id="currentyear"></span> Brandon Adolf | It Begins With Wood - Virginia, United States</p>
-        <p id="lastModified"></p>
     </footer>
 </body>
 

@@ -1,9 +1,9 @@
-import { pageTitle, setLocalStore, getJsonBin, getLocalStore, updateJsonBin } from "./util.mjs";
+import { pageTitle, setLocalStore, getJsonBin, getLocalStore, updateJsonBin, checkSession, setFirstSession } from "./util.mjs";
 import JournalEntries from "./JournalEntries.mjs";
 
 
 pageTitle();
-
+setFirstSession();
 
 //-----------------------------
 // Journal page dialog box leading to forms for journal entry sumbission
@@ -30,16 +30,25 @@ if (closeModal) {
 //---------------------------
 const url = 'https://api.jsonbin.io/v3/b/67a8d436e41b4d34e487463c';
 let storedEntries = getLocalStore('entries');
+let sessionNum = checkSession('firstLoad');
+
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await getJsonBin(url)
-        .then(data => {
-            setLocalStore('entries', data.record.entries);
-            storedEntries = data.record.entries; // Update storedEntries
-            entryData(storedEntries); // Call entryData with updated storedEntries
-        })
-        .catch(error => console.error('Error fetching data:', error));
+
+    if (!sessionNum) {
+        entryData(storedEntries);
+    } else {
+        await getJsonBin(url)
+            .then(data => {
+                setLocalStore('entries', data.record.entries);
+                storedEntries = data.record.entries; // Update storedEntries
+                entryData(storedEntries); // Call entryData with updated storedEntries
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
 });
+
+
 //-----------------------------
 // Journal page entry card and modal building
 //---------------------------

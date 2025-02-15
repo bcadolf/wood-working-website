@@ -214,6 +214,107 @@ footer {
 }
 
 
+/* projects page */
+.project-icon {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    box-shadow: 3px 5px 8px #3e2f1d90;
+    background-color: var(--background);
+    padding: 2px;
+    margin: 5px
+}
+
+.project-icon:hover::before {
+    content: "";
+    opacity: 1;
+    background-color: #5ba75b44;
+}
+
+.project-icon:hover {
+    opacity: 70%;
+    box-shadow: 2px 2px 4px #3e2f1dbb;
+}
+
+#proj-highlight {
+    width: 400px;
+    border-bottom: 2px solid var(--primary-color);
+    grid-template-columns: auto auto;
+    grid-template-rows: 20px 20px auto 20px;
+    align-content: center;
+    padding: 5px;
+}
+
+#highlight-img {
+    grid-area: 1/1/5/2;
+    width: 150px;
+    height: 175px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    box-shadow: 2px 4px 6px #3e2f1d90;
+    background-color: var(--background);
+    padding: 2px;
+    margin: 5px;
+}
+
+#highlight-title {
+    grid-area: 1/2/2/3;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#highlight-name {
+    grid-area: 2/2/3/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#highlight-description {
+    grid-area: 3/2/4/3;
+    text-align: left;
+    text-indent: 15px;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#view-details {
+    grid-area: 4/2/5/3;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#view-details:hover {
+    color: var(--accent-color);
+    background-color: #3e2f1d99;
+}
+
+
+
+/* project page end */
+
+
 @media screen and (min-width: 600px) {
 
     #menu {

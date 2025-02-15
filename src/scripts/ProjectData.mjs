@@ -26,5 +26,49 @@ export default class ProjectData {
             model: this.model
         }
     }
+
+    // Method to update the second card with project data
+    highlightCard() {
+        const highlightImg = document.getElementById('highlight-img');
+        const highlightTitle = document.getElementById('highlight-title');
+        const highlightName = document.getElementById('highlight-name');
+        const highlightDescription = document.getElementById('highlight-description');
+
+        highlightImg.src = this.image;
+        highlightImg.alt = `picture of ${this.title}`
+        highlightTitle.textContent = this.title;
+        highlightName.textContent = `Created By: ${this.name}`;
+        highlightDescription.textContent = this.description;
+
+        document.getElementById('proj-highlight').style.display = 'grid';
+    }
+    // update the full details display.
+    displayCard() {
+        const displayTitle = document.getElementById('display-title');
+        const displayName = document.getElementById('display-name');
+        const displayDescription = document.getElementById('display-description');
+        const displayDirections = document.getElementById('display-directions');
+        const displaySupplies = document.getElementById('display-supplies');
+        const displayCost = document.getElementById('display-cost');
+        const displayTools = document.getElementById('display-tools');
+        const displayDifficulty = document.getElementById('display-difficulty');
+        const displayImage = document.getElementById('display-image');
+        const displayModel = document.getElementById('display-model');
+
+        displayTitle.textContent = this.title;
+        displayName.textContent = `Name: ${this.name}`;
+        displayDescription.textContent = `Description: ${this.description}`;
+        displayDirections.textContent = `Directions: ${this.directions}`;
+        displaySupplies.textContent = `Supplies: ${this.supplies.join(', ')}`;
+        displayCost.textContent = `Cost: ${this.cost}`;
+        displayTools.textContent = `Tools: ${this.tools.join(', ')}`;
+        displayDifficulty.textContent = `Difficulty: ${this.difficulty}`;
+        displayImage.src = this.image;
+        displayModel.textContent = `Model: ${this.model}`;
+
+        document.getElementById('proj-display').style.display = 'block';
+    }
+
+
 }
 
