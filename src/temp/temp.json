@@ -1,22 +1,25 @@
 {
     "projects": [
         {
-            "name": "Author 1",
-            "title": "Project Title 1",
-            "description": "Brief description of project 1, that goes on and on and on on on on on ono non no ",
-            "directions": "Detailed directions for project 1",
+            "name": "Brandon A",
+            "title": "Dragon Egg - Hatching",
+            "description": "A hatching dragon egg handcarved from a basswood blank. First project is all about carving your egg and then making it hatch!",
+            "directions": "Start by making sure all your knives are sharp. Cut your wood to a block about 5-6 inches tall (grain going vertical) and 2-3 inches width and depth. Put on finger guards!!!! Begin to shape the wood from the edges rounding it to an oblong oval. The top should be narrower than the bottom. Widest point about two thirds of the way down. You now have and egg!! This will actually help you practice three different types of cuts. The push cut, pull cut, and stop cut. If you desire for extra challege, pick a animal or creature and carve it hatching from the egg. You can see my first attempt in the images. I carved a dragon hatching. You then gently sand to your desired smoothness. I personally liked to look of rough cut so left it like that. Final step is to apply tung oil with a lint free cloth or brush. Do about 2-3 coats with a at least 24 hours between each.",
             "supplies": [
-                "Supply 1",
-                "Supply 2"
+                "Carvingwood of your choice",
+                "Tung oil",
+                "Lint-free rag"
             ],
-            "cost": "$50",
+            "cost": "$5-30",
             "tools": [
-                "Tool 1",
-                "Tool 2"
+                "Carving Knife or Small Pocket Knife (locking blade do not use pressure fold for carving)",
+                "Sand Paper",
+                "Sharpening Stone",
+                "Hand saw"
             ],
-            "difficulty": "Medium",
+            "difficulty": "Rookie",
             "image": "/src/images/dragon-egg-front.webp",
-            "model": "model1.obj"
+            "model": ""
         },
         {
             "name": "Author 2",
