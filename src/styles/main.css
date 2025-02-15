@@ -213,6 +213,8 @@ footer {
     border-radius: 5px;
 }
 
+
+/* projects page */
 .project-icon {
     width: 100px;
     height: 100px;
@@ -220,6 +222,75 @@ footer {
     object-fit: cover;
     object-position: center;
 }
+
+.proj-highlight {
+    width: 400px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 20px 20px auto 20px;
+    align-content: center;
+}
+
+#highlight-img {
+    grid-area: 1/1/5/2;
+    width: 150px;
+    height: 175px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    margin: 5px;
+    padding: 5px;
+}
+
+#highlight-title {
+    grid-area: 1/2/2/3;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#highlight-name {
+    grid-area: 2/2/3/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#highlight-description {
+    grid-area: 3/2/4/3;
+    text-align: center;
+    text-indent: 15px;
+    word-wrap: break-word;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#view-details {
+    grid-area: 4/2/5/3;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#view-details:hover {
+    color: var(--accent-color);
+    background-color: #3e2f1d99;
+}
+
+/* project page end */
 
 
 @media screen and (min-width: 600px) {
