@@ -60,16 +60,16 @@ export async function updateJsonBin(key) {
     }
 }
 
-export function setFirstSession() {
+export function setFirstSession(page) {
     document.addEventListener('DOMContentLoaded', () => {
-        if (!sessionStorage.getItem('firstLoad')) {
+        if (!sessionStorage.getItem(page)) {
             // Set Intial load value
-            sessionStorage.setItem('firstLoad', true);
+            sessionStorage.setItem(page, 'true');
         }
     });
 }
 
-export function checkSession(key) {
-    const load = sessionStorage.getItem(key);
+export function checkSession(page) {
+    const load = sessionStorage.getItem(page);
     return load === 'true';
 }
