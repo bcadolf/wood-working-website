@@ -54,8 +54,13 @@ export default class ProjectData {
         const displayDifficulty = document.getElementById('display-difficulty');
         const displayImage = document.getElementById('display-image');
         const displayModel = document.getElementById('display-model');
+        const button = document.createElement('button');
+
+        button.id = 'display-close';
+        button.textContent = 'X';
 
         displayTitle.textContent = this.title;
+        displayTitle.appendChild(button);
         displayName.textContent = `Name: ${this.name}`;
         displayDescription.textContent = `Description: ${this.description}`;
         displayDirections.textContent = `Directions: ${this.directions}`;
