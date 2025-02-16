@@ -57,6 +57,9 @@ function displayProjects(projects) {
         event.preventDefault();
         const index = document.querySelector('.project-icon.clicked').getAttribute('data-index');
         projects[index].displayCard();
+        document.getElementById('proj-display').scrollIntoView({
+            behavior: 'smooth'
+        });
 
         document.getElementById('display-close').addEventListener('click', () => {
             document.getElementById('proj-display').style.display = "none";

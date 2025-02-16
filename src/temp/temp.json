@@ -19,7 +19,7 @@
             ],
             "difficulty": "Rookie",
             "image": "./images/dragon-egg-front.webp",
-            "model": ""
+            "model": null
         },
         {
             "name": "Brandon A",
@@ -32,10 +32,11 @@
             ],
             "cost": "$10-30",
             "tools": [
-                "Tool A",
-                "Tool B"
+                "Lathe with 12 inch swing",
+                "Bowl Gouges",
+                "Saw"
             ],
-            "difficulty": "Easy",
+            "difficulty": "Beginner",
             "image": "./images/cherry-wood-plate.webp",
             "model": "model2.obj"
         }

@@ -215,6 +215,16 @@ footer {
 
 
 /* projects page */
+#proj-icons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.icon {
+    flex-basis: 25%;
+}
+
 .project-icon {
     width: 100px;
     height: 100px;
@@ -226,7 +236,7 @@ footer {
     box-shadow: 3px 5px 8px #3e2f1d90;
     background-color: var(--background);
     padding: 2px;
-    margin: 5px
+    margin: 5px;
 }
 
 .project-icon:hover::before {
