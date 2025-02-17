@@ -1,31 +1,51 @@
-import { pageTitle } from "./util.mjs";
+import { getJsonBin, pageTitle, setLocalStore, getLocalStore, setFirstSession, checkSession } from "./util.mjs";
 import ProjectData from "./ProjectData.mjs";
+import { calcProj } from "./ProjectCalc.mjs";
 
 
 pageTitle();
-
+setFirstSession('projects');
 
 // Fetch JSON data
-async function fetchProjectData() {
-    try {
-        const response = await fetch('./temp/temp.json'); // Path to your JSON file
-        const data = await response.json();
-        return data.projects.map(project => new ProjectData(
-            project.name,
-            project.title,
-            project.description,
-            project.directions,
-            project.supplies,
-            project.cost,
-            project.tools,
-            project.difficulty,
-            project.image,
-            project.model
-        ));
-    } catch (error) {
-        console.error('Error fetching project data:', error);
+const url = 'https://api.jsonbin.io/v3/b/67aab274ad19ca34f8feccd2';
+let sessionNum = checkSession('projects');
+let storedProjs = getLocalStore('projects').map(project => new ProjectData(
+    project.name,
+    project.title,
+    project.description,
+    project.directions,
+    project.supplies,
+    project.cost,
+    project.tools,
+    project.difficulty,
+    project.image,
+    project.model
+));
+
+document.addEventListener('DOMContentLoaded', async () => {
+    if (sessionNum) {
+        displayProjects(storedProjs);
+    } else {
+        await getJsonBin(url)
+            .then(data => {
+                setLocalStore('projects', data.record.projects);
+                storedProjs = data.record.projects.map(project => new ProjectData(
+                    project.name,
+                    project.title,
+                    project.description,
+                    project.directions,
+                    project.supplies,
+                    project.cost,
+                    project.tools,
+                    project.difficulty,
+                    project.image,
+                    project.model
+                ));
+                displayProjects(storedProjs);
+            })
+            .catch(error => console.error('Error fetching data:', error));
     }
-}
+});
 
 // Display project icons
 function displayProjects(projects) {
@@ -57,12 +77,27 @@ function displayProjects(projects) {
         event.preventDefault();
         const index = document.querySelector('.project-icon.clicked').getAttribute('data-index');
         projects[index].displayCard();
+        document.getElementById('proj-display').scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        document.getElementById('display-close').addEventListener('click', () => {
+            document.getElementById('proj-display').style.display = "none";
+        });
     });
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const projects = await fetchProjectData();
-    displayProjects(projects);
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const userInput = document.querySelectorAll('.calc');
+    const results = document.getElementById('results');
+
+    userInput.forEach(input => {
+        input.addEventListener('input', () => {
+            results.textContent = calcProj();
+        });
+    });
+
+})
+
 
 

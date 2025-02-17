@@ -3,7 +3,7 @@ import JournalEntries from "./JournalEntries.mjs";
 
 
 pageTitle();
-setFirstSession();
+setFirstSession('journal');
 
 //-----------------------------
 // Journal page dialog box leading to forms for journal entry sumbission
@@ -30,12 +30,12 @@ if (closeModal) {
 //---------------------------
 const url = 'https://api.jsonbin.io/v3/b/67a8d436e41b4d34e487463c';
 let storedEntries = getLocalStore('entries');
-let sessionNum = checkSession('firstLoad');
+let sessionNum = checkSession('journal');
 
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-    if (!sessionNum) {
+    if (sessionNum) {
         entryData(storedEntries);
     } else {
         await getJsonBin(url)

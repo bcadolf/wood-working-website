@@ -32,65 +32,88 @@
             <a class="nav-item" href="projects.html">PROJECTS</a>
         </nav>
     </header>
-    <main>
+    <main id="proj-page">
         <h2 id="activePage">HOME</h2>
-        <article>
-            <div id="proj-highlight">
-                <img id="highlight-img" src="" alt="Project Image">
-                <h3 id="highlight-title"></h3>
-                <p id="highlight-name"></p>
-                <p id="highlight-description"></p>
-                <a href="#" id="view-details">View All Details</a>
-            </div>
-            <div id="proj-icons">
-                <!-- dynamic project icons made from the images for each project -->
-            </div>
-        </article>
-        <section>
-            <h2>project calc</h2>
-        </section>
-        <aside>
-            <form action="https://formspree.io/f/xvgzbonw" method="POST" enctype="multipart/form-data">
-                <legend>Project Concept Submissions</legend>
-                <fieldset>
-                    <legend>Personal Information</legend>
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required autocomplete="name">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required autocomplete="email">
-                </fieldset>
-                <fieldset>
-                    <legend>Project Information</legend>
-                    <label for="proj-title">Project Title</label>
-                    <input type="text" name="proj-title" id="proj-title" required>
-                    <label for="proj-content">Description or Instructions</label>
-                    <textarea name="proj-content" id="proj-content" required></textarea>
-                </fieldset>
-                <fieldset>
-                    <legend>Optional Project Details</legend>
-                    <label for="proj-supplies">Expected Supplies</label>
-                    <textarea name="proj-supplies" id="proj-supplies"></textarea>
-                    <label for="proj-tools">Tools Required</label>
-                    <textarea name="proj-tools" id="proj-tools"></textarea>
-                    <label for="proj-difficulty">Difficulty</label>
-                    <select name="proj-difficulty" id="proj-difficulty">
-                        <option value="">--</option>
-                        <option value="rookie">Rookie</option>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="professional">Professional</option>
-                        <option value="crazy">ARE YOU CRAZY?</option>
-                    </select>
-                </fieldset>
-                <fieldset>
-                    <label for="proj-img-upload">Example Images or Drawings<input type="file" name="proj-img-upload"
-                            id="proj-img-upload" accept="image/*"></label>
-                </fieldset>
-                <label for="proj-updates">Would you like updates?</label>
-                <input type="checkbox" name="proj-updates" id="proj-updates">
-                <input type="submit" value="Send Project">
-            </form>
-        </aside>
+        <div class="col">
+            <article id="proj-article">
+                <div id="proj-highlight">
+                    <img id="highlight-img" src="" alt="Project Image">
+                    <h3 id="highlight-title"></h3>
+                    <p id="highlight-name"></p>
+                    <p id="highlight-description"></p>
+                    <a href="#" id="view-details">View All Details</a>
+                </div>
+                <div id="proj-icons">
+                    <!-- dynamic project icons made from the images for each project -->
+                </div>
+            </article>
+        </div>
+        <div class="col">
+            <section id="proj-section">
+                <h3>Project Pricing Estimator</h3>
+                <form action="" id="proj-calc">
+                    <fieldset>
+                        <label for="time">Hours Needed:</label>
+                        <input type="number" placeholder="Estimated Hours" id="time" name="time" class="calc">
+                        <label for="difficulty">Difficulty of Project:</label>
+                        <select name="difficulty" id="difficulty" class="calc">
+                            <option value="">--</option>
+                            <option value="rookie">Rookie</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="professional">Professional</option>
+                            <option value="crazy">ARE YOU CRAZY?</option>
+                        </select>
+                        <label for="materials">Material Cost:</label>
+                        <input type="number" id="materials" name="materials" placeholder="Material Cost" class="calc">
+                    </fieldset>
+                    <p>Estimate: <span id="results">$0.00</span></p>
+                </form>
+            </section>
+            <aside id="project-aside">
+                <form action="https://formspree.io/f/xvgzbonw" method="POST" enctype="multipart/form-data">
+                    <legend>Project Concept Submissions</legend>
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required autocomplete="name">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required autocomplete="email">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Project Information</legend>
+                        <label for="proj-title">Project Title</label>
+                        <input type="text" name="proj-title" id="proj-title" required>
+                        <label for="proj-content">Description or Instructions</label>
+                        <textarea name="proj-content" id="proj-content" required></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Optional Project Details</legend>
+                        <label for="proj-supplies">Expected Supplies</label>
+                        <textarea name="proj-supplies" id="proj-supplies"></textarea>
+                        <label for="proj-tools">Tools Required</label>
+                        <textarea name="proj-tools" id="proj-tools"></textarea>
+                        <label for="proj-difficulty">Difficulty</label>
+                        <select name="proj-difficulty" id="proj-difficulty">
+                            <option value="">--</option>
+                            <option value="rookie">Rookie</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="professional">Professional</option>
+                            <option value="crazy">ARE YOU CRAZY?</option>
+                        </select>
+
+                    </fieldset>
+                    <fieldset>
+                        <label for="proj-img-upload">Example Images or Drawings</label>
+                        <input type="file" name="proj-img-upload" id="proj-img-upload" accept="image/*">
+                    </fieldset>
+                    <label for="proj-updates">Would you like updates?</label>
+                    <input type="checkbox" name="proj-updates" id="proj-updates">
+                    <input type="submit" value="Send Project For Review">
+                </form>
+            </aside>
+        </div>
         <div id="proj-display">
             <h2 id="display-title"></h2>
             <p id="display-name"></p>
@@ -100,8 +123,10 @@
             <p id="display-cost"></p>
             <p id="display-tools"></p>
             <p id="display-difficulty"></p>
-            <img id="display-image">
-            <p id="display-model"></p>
+            <div id="display-examples">
+                <img id="display-image">
+                <div id="display-model"></div>
+            </div>
         </div>
     </main>
     <footer>
