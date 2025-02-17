@@ -374,6 +374,10 @@ input[type="submit"]:hover {
     border: 2px solid var(--primary-color);
 }
 
+#display-image {
+    width: auto;
+}
+
 #display-close {
     background: var(--secondary-color);
     border: 2px solid var(--primary-color);
@@ -389,6 +393,12 @@ input[type="submit"]:hover {
     color: #d1bfa8;
     cursor: pointer;
 
+}
+
+#proj-calc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 

@@ -53,8 +53,9 @@ export default class ProjectData {
         const displayTools = document.getElementById('display-tools');
         const displayDifficulty = document.getElementById('display-difficulty');
         const displayImage = document.getElementById('display-image');
-        const displayModel = document.getElementById('display-model');
+
         const button = document.createElement('button');
+
 
         button.id = 'display-close';
         button.textContent = 'X';
@@ -65,11 +66,30 @@ export default class ProjectData {
         displayDescription.textContent = `Description: ${this.description}`;
         displayDirections.textContent = `Directions: ${this.directions}`;
         displaySupplies.textContent = `Supplies: ${this.supplies.join(', ')}`;
-        displayCost.textContent = `Cost: ${this.cost}`;
+        displayCost.textContent = `Material Cost: ${this.cost}`;
         displayTools.textContent = `Tools: ${this.tools.join(', ')}`;
         displayDifficulty.textContent = `Difficulty: ${this.difficulty}`;
         displayImage.src = this.image;
-        displayModel.textContent = `Model: ${this.model}`;
+        // loading another api and iframe for 3d models
+        const displayModel = document.getElementById('display-model');
+        if (this.model === null) {
+            displayModel.textContent = '';
+        } else {
+            async function loadModel(modelId) {
+                try {
+                    const response = await fetch(`https://sketchfab.com/oembed?url=https://sketchfab.com/models/${modelId}`);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const data = await response.json();
+                    displayModel.innerHTML = data.html;
+                } catch (error) {
+                    console.error('Error fetching model:', error);
+                }
+            }
+            loadModel(this.model);
+        }
+
 
         document.getElementById('proj-display').style.display = 'block';
     }

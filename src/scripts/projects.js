@@ -1,5 +1,6 @@
 import { getJsonBin, pageTitle, setLocalStore, getLocalStore, setFirstSession, checkSession } from "./util.mjs";
 import ProjectData from "./ProjectData.mjs";
+import { calcProj } from "./ProjectCalc.mjs";
 
 
 pageTitle();
@@ -86,6 +87,17 @@ function displayProjects(projects) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const userInput = document.querySelectorAll('.calc');
+    const results = document.getElementById('results');
+
+    userInput.forEach(input => {
+        input.addEventListener('input', () => {
+            results.textContent = calcProj();
+        });
+    });
+
+})
 
 
 
